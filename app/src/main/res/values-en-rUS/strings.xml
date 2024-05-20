@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AcquaCare</string>
+    <string name="welcome_text">We aim to help aquarists keep their aquariums stable, allowing a healthy environment for fauna.</string>
+    <string name="welcome_title">Welcome to AcquaCare</string>
+    <string name="start">start</string>
+</resources>

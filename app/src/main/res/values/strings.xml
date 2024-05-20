@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">AcquaCare</string>
+    <string name="welcome_title">Bem vindo ao AcquaCare</string>
+    <string name="welcome_text">Temos como objetivo ajudar o aquarista a manter seus aquários estáveis permitindo um hambiente saudável a fauna.</string>
+    <string name="start">Iniciar</string>
+</resources>
