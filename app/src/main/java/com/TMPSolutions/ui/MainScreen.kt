@@ -1,5 +1,6 @@
 package com.TMPSolutions.ui
 
+import android.content.Context
 import android.graphics.BlurMaskFilter
 import android.graphics.Color.toArgb
 import androidx.compose.foundation.Image
@@ -73,7 +74,6 @@ fun MainScreen(modifier: Modifier = Modifier) {
 @Composable
 fun UserArea(modifier: Modifier = Modifier) {
     Box(
-        contentAlignment = Alignment.Center,
         modifier = modifier
             .fillMaxWidth()
             .fillMaxHeight(.25f)
@@ -81,17 +81,23 @@ fun UserArea(modifier: Modifier = Modifier) {
     ){
 
         TopCircles(
-            Modifier.align(Alignment.TopStart),
+            modifier.align(Alignment.TopStart),
             tint = R.color.top_white_circle
         )
 
-        Text(
-            text = "Welcome, ####",
-            color = Color.White,
-            fontWeight = FontWeight.Bold,
-            fontSize = 18.sp,
-            textAlign = TextAlign.Center
-        )
+        Box(
+            modifier
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = "Welcome, ####",
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                fontSize = 18.sp,
+                textAlign = TextAlign.Center
+            )
+        }
 
         TextButton(
             onClick = { /*TODO*/ },

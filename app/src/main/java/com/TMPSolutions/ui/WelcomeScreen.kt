@@ -1,5 +1,6 @@
 package com.TMPSolutions.ui
 
+import android.content.Context
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -35,16 +36,7 @@ fun WelcomeScreen(modifier: Modifier = Modifier) {
             .background(colorResource(id = R.color.light_background)),
             horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Box(
-            modifier = Modifier
-                .fillMaxWidth()
-                .fillMaxHeight(.25f)
-        ) {
-            TopCircles(
-                Modifier
-                    .align(Alignment.TopStart)
-            )
-        }
+        TopCircles()
 
         Image(
             painter = painterResource(id = R.drawable.ic_logo),
