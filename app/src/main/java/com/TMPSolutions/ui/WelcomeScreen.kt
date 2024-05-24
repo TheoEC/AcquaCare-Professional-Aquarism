@@ -24,16 +24,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.compose.rememberNavController
+import androidx.navigation.NavHostController
 import com.TMPSolutions.R
+import com.TMPSolutions.ui.navigation.Screen
 
 @Preview(showBackground = true)
 @Composable
-fun WelcomeScreen(modifier: Modifier = Modifier) {
+fun WelcomeScreen(modifier: Modifier = Modifier, navController: NavHostController? = null) {
     Column(
         modifier = modifier
-            .fillMaxSize()
-            .background(colorResource(id = R.color.light_background)),
+            .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         TopCircles()
@@ -70,9 +70,10 @@ fun WelcomeScreen(modifier: Modifier = Modifier) {
                 .padding(horizontal = 16.dp, vertical = 32.dp)
         ){
             Button(
-                onClick = { /*TODO*/ },
+                onClick = {
+                      navController?.navigate(route = Screen.LoginScreen.route + "/${true}")
+                      },
                 modifier = Modifier
-                    .background(colorResource(id = R.color.light_background))
                     .fillMaxWidth()
                     .height(60.dp)
                     .align(Alignment.BottomCenter),
