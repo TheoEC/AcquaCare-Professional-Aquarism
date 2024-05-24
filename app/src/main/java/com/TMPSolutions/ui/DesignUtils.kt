@@ -36,8 +36,8 @@ fun TopCircles(
             painter = painterResource(id = R.drawable.img_user_area_background_foreground),
             contentDescription = null,
             modifier = modifier
-                .width(ApplicationScreen.Width * .33f)
-                .height(ApplicationScreen.Width * .33f),
+                .width(ApplicationScreen.Width * .45f)
+                .height(ApplicationScreen.Width * .45f),
             alignment = Alignment.TopStart,
             colorFilter = ColorFilter.tint(colorResource(tint))
         )
