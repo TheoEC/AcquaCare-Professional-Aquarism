@@ -1,5 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+<font-family xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Thin = 100 -->
+    <!-- ExtraLight = 200 -->
+    <!-- Light = 300 -->
+    <!-- Normal = 400 -->
+    <!-- Medium = 500 -->
+    <!-- SemiBold = 600 -->
+    <!-- Bold = 700 -->
+    <!-- ExtraBold = 800 -->
+    <!-- Black = 900 -->
+
     <font
-        android:fontStyle="normal"
+        app:fontStyle="normal"
+        app:fontWeight="400"
+        app:font="@font/poppins_regular"/>
+
+    <font
+        app:fontStyle="normal"
+        app:fontWeight="700"
+        app:font="@font/poppins_bold"/>
+
+    <font
+        app:fontStyle="italic"
+        app:fontWeight="400"
+        app:font="@font/poppins_italic"/>
+
+    <font
+        app:fontStyle="italic"
+        app:fontWeight="700"
+        app:font="@font/poppins_bolditalic"/>
+
 </font-family>
