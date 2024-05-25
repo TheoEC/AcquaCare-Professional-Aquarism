@@ -1,4 +1,4 @@
-package com.TMPSolutions.mapper
+package com.tmpsolutions.mapper
 
 import android.content.Context
 import androidx.compose.ui.unit.dp

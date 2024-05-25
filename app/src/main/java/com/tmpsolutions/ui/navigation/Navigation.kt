@@ -1,15 +1,13 @@
-package com.TMPSolutions.ui.navigation
+package com.tmpsolutions.ui.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.TMPSolutions.ui.LoginScreen
-import com.TMPSolutions.ui.WelcomeScreen
+import com.tmpsolutions.ui.LoginScreen
+import com.tmpsolutions.ui.WelcomeScreen
 
 @Composable
 fun Navigation() {

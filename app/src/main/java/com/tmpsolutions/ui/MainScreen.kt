@@ -1,8 +1,5 @@
-package com.TMPSolutions.ui
+package com.tmpsolutions.ui
 
-import android.content.Context
-import android.graphics.BlurMaskFilter
-import android.graphics.Color.toArgb
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -14,39 +11,27 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults.buttonColors
 import androidx.compose.material.Card
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.LocalTextStyle
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawWithContent
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.Shadow
-import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
-import androidx.compose.ui.graphics.nativeCanvas
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.TMPSolutions.R
+import com.tmpsolutions.R
 
 @Preview(showBackground = true)
 @Composable
@@ -165,6 +150,7 @@ fun ShadedText(text: String, modifier: Modifier = Modifier, elevation: Int = 1, 
     Text(
         text = text,
         color = Color.Black,
+        fontWeight = fontWeight,
         style = LocalTextStyle.current.copy(
             shadow = Shadow(
                 color = Color.Gray,
@@ -172,7 +158,6 @@ fun ShadedText(text: String, modifier: Modifier = Modifier, elevation: Int = 1, 
                 blurRadius = 5f
             )
         )
-
     )
 }
 

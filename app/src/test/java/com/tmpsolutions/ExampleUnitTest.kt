@@ -1,4 +1,4 @@
-package com.TMPSolutions
+package com.tmpsolutions
 
 import org.junit.Test
 

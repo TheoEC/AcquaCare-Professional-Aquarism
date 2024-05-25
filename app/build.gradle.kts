@@ -4,12 +4,12 @@ plugins {
 }
 
 android {
-    namespace = "com.TMPSolutions"
+    namespace = "com.tmpsolutions"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.TMPSolutions"
-        minSdk = 22
+        applicationId = "com.tmpsolutions"
+        minSdk = 23
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.compose)
     implementation(libs.navigation.ui)
+    implementation(libs.androidx.tools.core)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

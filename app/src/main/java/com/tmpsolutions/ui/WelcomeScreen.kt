@@ -1,8 +1,6 @@
-package com.TMPSolutions.ui
+package com.tmpsolutions.ui
 
-import android.content.Context
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -25,8 +23,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import com.TMPSolutions.R
-import com.TMPSolutions.ui.navigation.Screen
+import com.tmpsolutions.ApplicationScreen
+import com.tmpsolutions.R
+import com.tmpsolutions.ui.navigation.Screen
 
 @Preview(showBackground = true)
 @Composable
@@ -67,7 +66,7 @@ fun WelcomeScreen(modifier: Modifier = Modifier, navController: NavHostControlle
         Box (
             modifier = modifier
                 .fillMaxSize()
-                .padding(horizontal = 16.dp, vertical = 32.dp)
+                .padding(horizontal = 16.dp, vertical = ApplicationScreen.NavigationBarHeight)
         ){
             Button(
                 onClick = {
@@ -76,7 +75,8 @@ fun WelcomeScreen(modifier: Modifier = Modifier, navController: NavHostControlle
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(60.dp)
-                    .align(Alignment.BottomCenter),
+                    .align(Alignment.BottomCenter)
+                    ,
                 colors = ButtonDefaults.buttonColors(backgroundColor = colorResource(id = R.color.user_area_background))
             ) {
                 Text(

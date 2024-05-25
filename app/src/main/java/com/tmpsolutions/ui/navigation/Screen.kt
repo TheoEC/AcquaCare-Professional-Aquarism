@@ -1,4 +1,4 @@
-package com.TMPSolutions.ui.navigation
+package com.tmpsolutions.ui.navigation
 
 sealed class Screen(val route: String) {
     object WelcomeScreen : Screen("welcome")
