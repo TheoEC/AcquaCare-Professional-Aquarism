@@ -56,6 +56,8 @@ dependencies {
     implementation(libs.navigation.ui)
     implementation(libs.androidx.tools.core)
 
+    implementation(project(":domain"))
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

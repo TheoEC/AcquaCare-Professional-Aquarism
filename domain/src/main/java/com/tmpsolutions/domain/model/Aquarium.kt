@@ -8,5 +8,4 @@ data class Aquarium (
     var length: Float,
     var width: Float,
     var height: Float
-
 )

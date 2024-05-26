@@ -1,4 +1,4 @@
-package com.tmpsolutions.ui
+package com.tmpsolutions.ui.MainScreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -12,7 +12,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Card
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.LocalTextStyle
@@ -31,7 +33,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.tmpsolutions.ApplicationScreen
 import com.tmpsolutions.R
+import com.tmpsolutions.domain.model.Aquarium
+import com.tmpsolutions.domain.model.AquariumDomain
+import com.tmpsolutions.ui.TopCircles
 
 @Preview(showBackground = true)
 @Composable
@@ -43,14 +49,14 @@ fun MainScreen(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         UserArea(modifier)
-        Column (
+        LazyColumn (
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = modifier
                 .fillMaxWidth()
                 .padding(16.dp)
         ){
-            AquariumPreview()
+
         }
         AddAquariumButton()
     }
@@ -72,7 +78,8 @@ fun UserArea(modifier: Modifier = Modifier) {
 
         Box(
             modifier
-                .fillMaxSize(),
+                .fillMaxSize()
+                .padding(6.dp),
             contentAlignment = Alignment.Center
         ) {
             Text(
@@ -82,33 +89,31 @@ fun UserArea(modifier: Modifier = Modifier) {
                 fontSize = 18.sp,
                 textAlign = TextAlign.Center
             )
-        }
 
-        TextButton(
-            onClick = { /*TODO*/ },
-            modifier = modifier
-                .width(30.dp)
-                .height(30.dp)
-                .padding(0.dp)
-                .align(Alignment.BottomStart)
-                .background(Color.Transparent),
-            contentPadding = PaddingValues(0.dp, 0.dp, 0.dp, 0.dp),
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_menu),
-                contentDescription = null,
-                modifier = Modifier
-                    .width(24.dp)
-                    .height(24.dp)
+            TextButton(
+                onClick = {  },
+                modifier = modifier
+                    .size(ApplicationScreen.Width / 10)
+                    .padding(0.dp)
+                    .align(Alignment.BottomStart)
+                    .background(Color.Transparent),
+                contentPadding = PaddingValues(0.dp, 0.dp, 0.dp, 0.dp),
+            ) {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_menu),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .fillMaxWidth()
+                )
+            }
 
-            )
         }
     }
-
 }
 
 @Composable
-fun AquariumPreview() {
+fun AquariumPreview(Aquarium: AquariumDomain) {
     Card(
         modifier = Modifier
             .fillMaxWidth(.9f)
@@ -174,4 +179,10 @@ fun AddAquariumButton() {
                 .height(65.dp)
         )
     }
+}
+
+@Preview
+@Composable
+fun testCard(modifier: Modifier = Modifier) {
+    AquariumPreview(Aquarium = AquariumDomain(0, "0",0f ,0f,0f,0f))
 }

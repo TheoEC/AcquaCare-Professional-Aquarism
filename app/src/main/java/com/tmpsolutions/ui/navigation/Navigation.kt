@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.tmpsolutions.ui.LoginScreen
+import com.tmpsolutions.ui.MainScreen.MainScreen
 import com.tmpsolutions.ui.WelcomeScreen
 
 @Composable
@@ -27,7 +28,11 @@ fun Navigation() {
                 }
             )
         ) {entry ->
-            LoginScreen()
+            LoginScreen(navController)
+        }
+
+        composable(route = Screen.MainScreen.route) {
+            MainScreen()
         }
     }
 }

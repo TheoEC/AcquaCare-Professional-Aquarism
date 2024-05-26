@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.tmpsolutions.R
+import com.tmpsolutions.ui.navigation.Screen
 
 
 const val fillPercent = .9f
@@ -76,7 +77,9 @@ fun LoginScreen(navController: NavHostController? = null) {
 
         NextStepButton(
             text = "Entrar sem login",
-            onClick = { /*TODO*/ },
+            onClick = {
+                navController?.navigate(Screen.MainScreen.route)
+            },
             color = colorResource(id = R.color.btn_gray)
         )
 

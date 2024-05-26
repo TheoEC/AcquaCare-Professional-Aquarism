@@ -87,7 +87,5 @@ fun WelcomeScreen(modifier: Modifier = Modifier, navController: NavHostControlle
                 )
             }
         }
-
-
     }
 }
