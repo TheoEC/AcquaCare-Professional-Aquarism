@@ -2,7 +2,7 @@ package com.tmpsolutions.data.models
 
 import java.util.Date
 
-typealias AquariumModel = Aquarium
+//typealias AquariumModel = Aquarium
 
 data class Aquarium(
     val ID: Int,

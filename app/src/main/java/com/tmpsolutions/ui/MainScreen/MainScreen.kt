@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.LocalTextStyle
@@ -38,10 +39,13 @@ import com.tmpsolutions.R
 import com.tmpsolutions.domain.model.Aquarium
 import com.tmpsolutions.domain.model.AquariumDomain
 import com.tmpsolutions.ui.TopCircles
+import java.util.Date
 
-@Preview(showBackground = true)
 @Composable
-fun MainScreen(modifier: Modifier = Modifier) {
+fun MainScreen(
+    modifier: Modifier = Modifier,
+    Aquariums: List<AquariumDomain>
+) {
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -56,7 +60,9 @@ fun MainScreen(modifier: Modifier = Modifier) {
                 .fillMaxWidth()
                 .padding(16.dp)
         ){
-
+            items(items = Aquariums) {
+                AquariumPreview(Aquarium = it)
+            }
         }
         AddAquariumButton()
     }
@@ -107,7 +113,6 @@ fun UserArea(modifier: Modifier = Modifier) {
                         .fillMaxWidth()
                 )
             }
-
         }
     }
 }
@@ -141,10 +146,10 @@ fun AquariumPreview(Aquarium: AquariumDomain) {
                     .fillMaxSize()
             ) {
                 ShadedText(
-                    text = "Aquario 1",
+                    text = Aquarium.name.ifEmpty { "Aquarium" },
                     fontWeight = FontWeight.Bold
                 )
-                ShadedText(text = "Day: 0")
+                ShadedText(text = "Habitantes: ${Aquarium.Animals.size}")
             }
         }
     }
@@ -184,5 +189,19 @@ fun AddAquariumButton() {
 @Preview
 @Composable
 fun testCard(modifier: Modifier = Modifier) {
-    AquariumPreview(Aquarium = AquariumDomain(0, "0",0f ,0f,0f,0f))
+    val lstAquariums: MutableList<AquariumDomain> = mutableListOf(
+        AquariumDomain(
+            0,
+            "",
+            false,
+            Date(),
+            Date(),
+            emptyList(),
+            0,
+            0,
+            0,
+            0f
+        )
+    )
+    MainScreen(Aquariums = lstAquariums)
 }
