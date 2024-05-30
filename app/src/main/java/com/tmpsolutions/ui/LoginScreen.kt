@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.tmpsolutions.R
+import com.tmpsolutions.ui.DesignUtils.HeaderBox
 import com.tmpsolutions.ui.navigation.Screen
 
 
@@ -42,7 +43,7 @@ fun LoginScreen(navController: NavHostController? = null) {
             .background(colorResource(id = R.color.light_background)),
         horizontalAlignment = Alignment.CenterHorizontally
     ){
-        TopCircles()
+        HeaderBox()
 
         Text(
             text = stringResource(id = R.string.app_name),

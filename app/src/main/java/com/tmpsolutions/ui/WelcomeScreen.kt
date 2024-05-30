@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.tmpsolutions.ApplicationScreen
 import com.tmpsolutions.R
+import com.tmpsolutions.ui.DesignUtils.HeaderBox
 import com.tmpsolutions.ui.navigation.Screen
 
 @Preview(showBackground = true)
@@ -35,7 +36,7 @@ fun WelcomeScreen(modifier: Modifier = Modifier, navController: NavHostControlle
             .fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        TopCircles()
+        HeaderBox()
 
         Image(
             painter = painterResource(id = R.drawable.ic_logo),

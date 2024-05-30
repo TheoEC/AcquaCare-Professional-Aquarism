@@ -27,7 +27,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -36,27 +35,27 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tmpsolutions.ApplicationScreen
 import com.tmpsolutions.R
-import com.tmpsolutions.domain.model.Aquarium
 import com.tmpsolutions.domain.model.AquariumDomain
-import com.tmpsolutions.ui.TopCircles
+import com.tmpsolutions.ui.DesignUtils.AddButton
+import com.tmpsolutions.ui.DesignUtils.HeaderBox
+import com.tmpsolutions.ui.theme.TextStyles
 import java.util.Date
 
 @Composable
 fun MainScreen(
-    modifier: Modifier = Modifier,
     Aquariums: List<AquariumDomain>
 ) {
     Column(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .background(Color.White),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        UserArea(modifier)
+        UserArea(Modifier)
         LazyColumn (
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = modifier
+            modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp)
         ){
@@ -64,24 +63,13 @@ fun MainScreen(
                 AquariumPreview(Aquarium = it)
             }
         }
-        AddAquariumButton()
+        AddButton({ })
     }
 }
 
 @Composable
 fun UserArea(modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier
-            .fillMaxWidth()
-            .fillMaxHeight(.25f)
-            .background(colorResource(id = R.color.user_area_background))
-    ){
-
-        TopCircles(
-            modifier.align(Alignment.TopStart),
-            tint = R.color.top_white_circle
-        )
-
+    HeaderBox(title = "Welcome, ####"){
         Box(
             modifier
                 .fillMaxSize()
@@ -89,7 +77,7 @@ fun UserArea(modifier: Modifier = Modifier) {
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "Welcome, ####",
+                text = "",
                 color = Color.White,
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp,
@@ -145,44 +133,17 @@ fun AquariumPreview(Aquarium: AquariumDomain) {
                 modifier = Modifier
                     .fillMaxSize()
             ) {
-                ShadedText(
+                Text(
                     text = Aquarium.name.ifEmpty { "Aquarium" },
-                    fontWeight = FontWeight.Bold
+                    fontWeight = FontWeight.Bold,
+                    style = TextStyles.shadowTextStyle
                 )
-                ShadedText(text = "Habitantes: ${Aquarium.Animals.size}")
+                Text(
+                    text = "Habitantes: ${Aquarium.Animals.size}",
+                    style = TextStyles.shadowTextStyle
+                )
             }
         }
-    }
-}
-
-@Composable
-fun ShadedText(text: String, modifier: Modifier = Modifier, elevation: Int = 1, fontWeight: FontWeight = FontWeight.Normal) {
-    Text(
-        text = text,
-        color = Color.Black,
-        fontWeight = fontWeight,
-        style = LocalTextStyle.current.copy(
-            shadow = Shadow(
-                color = Color.Gray,
-                offset = Offset(2f, 4f),
-                blurRadius = 5f
-            )
-        )
-    )
-}
-
-@Composable
-fun AddAquariumButton() {
-    FloatingActionButton(
-        onClick = {}
-    ){
-        Image(
-            painter = painterResource(id = R.drawable.ic_add),
-            contentDescription = null,
-            modifier = Modifier
-                .width(65.dp)
-                .height(65.dp)
-        )
     }
 }
 
