@@ -8,10 +8,11 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.tmpsolutions.ui.LoginScreen
 import com.tmpsolutions.ui.MainScreen.MainScreen
+import com.tmpsolutions.ui.MainScreen.MainViewModel
 import com.tmpsolutions.ui.WelcomeScreen
 
 @Composable
-fun Navigation() {
+fun Navigation(mainViewModel: MainViewModel) {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Screen.WelcomeScreen.route) {
         composable(route = Screen.WelcomeScreen.route) {
@@ -32,7 +33,9 @@ fun Navigation() {
         }
 
         composable(route = Screen.MainScreen.route) {
-            MainScreen(emptyList())
+            MainScreen(
+                navController = navController,
+                mainViewModel = mainViewModel,)
         }
     }
 }

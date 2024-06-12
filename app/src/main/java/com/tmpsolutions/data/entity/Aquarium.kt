@@ -1,11 +1,14 @@
-package com.tmpsolutions.domain.model
+package com.tmpsolutions.data.entity
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import java.util.Date
 
-typealias AquariumDomain = Aquarium
+typealias AquariumEntity = Aquarium
 
-data class Aquarium (
-    val id: Int,
+@Entity
+data class Aquarium(
+    @PrimaryKey(autoGenerate = true) val id: Int,
     val name: String = "",
 
     var saltyWater: Boolean,
@@ -13,11 +16,10 @@ data class Aquarium (
     val creationData: Date,
     val lastModified: Date,
 
-    var Animals: List<Animal> = emptyList(),
-
     val width: Int,  //X
     val height: Int, //Y
     val length: Int, //Z
 
     val liters: Float,
 )
+

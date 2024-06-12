@@ -1,10 +1,12 @@
 package com.tmpsolutions.domain.model
 
-typealias AnimalDomain = Animal
-data class Animal (
-    val name: String,
-    val age: Int,
-    val price: Float,
+typealias AnimalInfoDomain = AnimalInfo
+
+data class AnimalInfo (
+    val id: Int = 0,
+    val scientificName: String,
+    val commonName: String,
+    val custom: Boolean = false,
     val size: Float, // Centimeters
 
     val minPH: Float,

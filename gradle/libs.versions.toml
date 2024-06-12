@@ -1,23 +1,35 @@
 [versions]
-agp = "8.4.1"
+agp = "8.4.2"
+comGoogleDevtoolsKspGradlePlugin = "1.9.24-1.0.20"
+gradle = "8.4.2"
 kotlin = "1.9.23"
 coreKtx = "1.13.1"
 junit = "4.13.2"
 junitVersion = "1.1.5"
 espressoCore = "3.5.1"
-appcompat = "1.6.1"
+appcompat = "1.7.0"
+kotlinGradlePlugin = "1.9.23"
+kotlinGradlePluginVersion = "1.0.0"
+kotlinxCoroutinesAndroid = "1.7.3"
 material = "1.12.0"
 compose = "1.6.7"
-jetbrainsKotlinJvm = "1.9.23"
+jetbrainsKotlinJvm = "1.9.24"
 navigation = "2.7.7"
 toolsCore = "1.0.0-alpha08"
+room = "2.6.1"
+ksp = "1.9.24-1.0.20"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+com-google-devtools-ksp-gradle-plugin = { module = "com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin", version.ref = "comGoogleDevtoolsKspGradlePlugin" }
+gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePlugin" }
+kotlin-gradle-plugin-v100 = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinGradlePluginVersion" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose"}
@@ -29,8 +41,14 @@ navigation-compose = {group = "androidx.navigation", name = "navigation-compose"
 navigation-ui = {group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation"}
 androidx-tools-core = { group = "androidx.privacysandbox.tools", name = "tools-core", version.ref = "toolsCore" }
 
+room-runtime = {group = "androidx.room", name = "room-runtime", version.ref = "room"}
+room-compiler = {group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-ktx = {group = "androidx.room", name = "room-ktx", version.ref = "room"}
+
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+android-ksp = {id = "com.google.devtools.ksp", version.ref = "ksp"}
 

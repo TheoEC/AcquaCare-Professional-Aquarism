@@ -21,5 +21,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "AcquaCare"
 include(":app")
-include(":data")
-include(":domain")

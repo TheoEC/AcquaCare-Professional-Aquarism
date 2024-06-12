@@ -93,7 +93,7 @@ fun BackgroundDesign(
 @Composable
 fun AddButton(onClick: () -> Unit) {
     FloatingActionButton(
-        onClick = onClick
+        onClick = { onClick() }
     ){
         Image(
             painter = painterResource(id = R.drawable.ic_add),
