@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    id("com.google.devtools.ksp") version "1.9.24-1.0.20"
 }
 
 android {
@@ -22,7 +23,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.13"
+        kotlinCompilerExtensionVersion = "1.5.14"
     }
 
     buildTypes {
@@ -56,7 +57,12 @@ dependencies {
     implementation(libs.navigation.ui)
     implementation(libs.androidx.tools.core)
 
-    implementation(project(":domain"))
+    implementation(libs.kotlinx.coroutines.android)
+
+    // Room
+    implementation(libs.room.ktx)
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
