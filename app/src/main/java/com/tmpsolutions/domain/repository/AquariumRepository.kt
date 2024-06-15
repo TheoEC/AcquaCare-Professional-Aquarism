@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface AquariumRepository {
     suspend fun getAll() : Flow<List<AquariumDomain>>
+    suspend fun getAquariumWithHabitants(aquariumID : Int) : Flow<AquariumDomain>
     suspend fun insertAquarium(aquarium: AquariumDomain)
     suspend fun updateAquarium(aquarium: AquariumDomain)
 }

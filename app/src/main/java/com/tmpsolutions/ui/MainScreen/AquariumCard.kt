@@ -1,6 +1,7 @@
 package com.tmpsolutions.ui.MainScreen
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -24,12 +25,16 @@ import com.tmpsolutions.ui.DesignUtils.AddButton
 import com.tmpsolutions.ui.theme.TextStyles
 
 @Composable
-fun AquariumCard(aquarium: AquariumDomain) {
+fun AquariumCard(
+    aquarium: AquariumDomain,
+    onClick : (aquariumdID : Int) -> Unit
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth(.9f)
             .padding(8.dp)
-            .height(100.dp),
+            .height(100.dp)
+            .clickable { onClick(aquarium.id) },
         elevation = 8.dp
     ) {
         Row (
@@ -66,7 +71,10 @@ fun AquariumCard(aquarium: AquariumDomain) {
 }
 
 @Composable
-fun AquariumCardList(aquariums : List<AquariumDomain>) {
+fun AquariumCardList(
+    aquariums : List<AquariumDomain>,
+    onClick : (aquariumdID : Int) -> Unit
+) {
     LazyColumn (
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -75,8 +83,7 @@ fun AquariumCardList(aquariums : List<AquariumDomain>) {
             .padding(16.dp)
     ){
         items(items = aquariums) {
-            AquariumCard(aquarium = it)
+            AquariumCard(aquarium = it, onClick)
         }
     }
-
 }

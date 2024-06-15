@@ -19,7 +19,6 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class MainViewModel(
-    context: Context,
     val getAllAquariumsUseCase: GetAllAquariumsUseCase,
     val repository: AquariumRepository
 ) : ViewModel() {
@@ -39,7 +38,6 @@ class MainViewModel(
                 }
                 .collect { aquariumsList ->
                     _state.emit(AquariumListState.Success(aquariumsList))
-                    _state.emit(AquariumListState.Success(aquariumsList))
                 }
         }
     }
@@ -53,7 +51,8 @@ class MainViewModel(
         override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
             val repository = AquariumRepositoryImpl(context.db.AquariumDao())
             return MainViewModel(
-                context, GetAllAquariumsUseCase(repository), repository
+                GetAllAquariumsUseCase(repository),
+                repository
             ) as T
         }
     }

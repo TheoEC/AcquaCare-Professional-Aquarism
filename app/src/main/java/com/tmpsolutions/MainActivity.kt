@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
 
         setContent{
             MyApplicationTheme {
-                Navigation(mainViewModel)
+                Navigation(applicationContext, mainViewModel)
             }
         }
     }

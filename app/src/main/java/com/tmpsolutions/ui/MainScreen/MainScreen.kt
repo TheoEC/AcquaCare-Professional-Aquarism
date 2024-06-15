@@ -28,6 +28,7 @@ import com.tmpsolutions.R
 import com.tmpsolutions.domain.model.AquariumDomain
 import com.tmpsolutions.ui.DesignUtils.AddButton
 import com.tmpsolutions.ui.DesignUtils.BackgroundDesign
+import com.tmpsolutions.ui.navigation.Screen
 import java.util.Date
 
 @Composable
@@ -47,7 +48,11 @@ fun MainScreen(
         if (state != null) {
             when(state.value) {
                 is AquariumListState.Success -> {
-                    AquariumCardList((state.value as AquariumListState.Success).aquariums)
+                    val aquariumsList = (state.value as AquariumListState.Success).aquariums
+                    AquariumCardList(aquariumsList) { aquariumID ->
+                        val teste = aquariumID
+                        navController?.navigate(route = Screen.AquariumDetailScreen.route + "/$aquariumID")
+                    }
                     AddButton(
                         onClick = {
                             showAddAquariumDialog = true

@@ -1,5 +1,6 @@
 package com.tmpsolutions.ui.AquariumDetails
 
+import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -22,67 +23,83 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tmpsolutions.R
-import com.tmpsolutions.domain.model.AquariumDomain
-import com.tmpsolutions.ui.DesignUtils.HeaderBox
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.sp
+import com.tmpsolutions.ui.DesignUtils.BackgroundDesign
 
-@Preview(showBackground = true)
 @Composable
-fun AquariumDetailsScreen(Aquarium: AquariumDomain? = null) {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        HeaderBox()
+fun AquariumDetailsScreen(viewModel: AquariumDetailViewModel) {
+    var title by remember { mutableStateOf("") }
 
-        val scrollSate = rememberScrollState()
-        Column(
-            modifier = Modifier
-                .padding(top = 10.dp)
-                .verticalScroll(scrollSate)
-        ) {
-            ButtonCard(
-                resourceId = R.drawable.ic_logo,
-                title = "Animals",
-                description = "Todos os animais do seu aquario estao salvos aqui.",
-                onClick = {}
-            )
+    val state = viewModel.state.collectAsState(initial = AquariumDetailState.Loading)
 
-            ButtonCard(
-                resourceId = R.drawable.ic_ph,
-                title = "Parametros",
-                description = "Saiba a saúde do seu aquário através de todas as métricas salvas ",
-                onClick = {}
-            )
-
-            ButtonCard(
-                resourceId = R.drawable.ic_termometer,
-                title = "Equipamentos",
-                description = "Todos os seus equipamentos",
-                onClick = {}
-            )
-
-            ButtonCard(
-                resourceId = R.drawable.ic_calendar,
-                title = "Calendario e rotinas",
-                description = "Planejamento e Registro de suas rotinas como almentção e outros",
-                onClick = {}
-            )
-
-            ButtonCard(
-                resourceId = R.drawable.ic_camera,
-                title = "Imagens",
-                description = "Imagens do seu aquario",
-                onClick = {}
-            )
+    BackgroundDesign(title = title) {
+        when(state.value) {
+            is AquariumDetailState.Loading -> {
+                title = "Loading"
+            }
+            is AquariumDetailState.Success -> {
+                title = (state.value as AquariumDetailState.Success).aquarium.name
+                FunctionalitiesList()
+            }
+            is AquariumDetailState.Error -> Log.e("AquariumDetailScreen", "ERROR")
         }
     }
 }
 
-@OptIn(ExperimentalMaterialApi::class)
+@Preview(device = "spec:id=reference_phone,shape=Normal,width=411,height=891,unit=dp,dpi=420")
+@Composable
+fun FunctionalitiesList(){
+    val scrollSate = rememberScrollState()
+    Column(
+        modifier = Modifier
+            .padding(top = 10.dp)
+            .verticalScroll(scrollSate)
+    ) {
+        ButtonCard(
+            resourceId = R.drawable.ic_logo,
+            title = "Animals",
+            description = "Todos os animais do seu aquario estao salvos aqui.",
+            onClick = {}
+        )
+
+        ButtonCard(
+            resourceId = R.drawable.ic_ph,
+            title = "Parametros",
+            description = "Saiba a saúde do seu aquário através de todas as métricas salvas ",
+            onClick = {}
+        )
+
+        ButtonCard(
+            resourceId = R.drawable.ic_termometer,
+            title = "Equipamentos",
+            description = "Todos os seus equipamentos",
+            onClick = {}
+        )
+
+        ButtonCard(
+            resourceId = R.drawable.ic_calendar,
+            title = "Calendario",
+            description = "Planejamento e Registro de suas rotinas como almentção e outros",
+            onClick = {}
+        )
+
+        ButtonCard(
+            resourceId = R.drawable.ic_camera,
+            title = "Imagens",
+            description = "Imagens do seu aquario",
+            onClick = {}
+        )
+    }
+}
+
 @Composable
 fun ButtonCard(
     @DrawableRes resourceId: Int,
@@ -121,13 +138,16 @@ fun ButtonCard(
                 Text(
                     text = title,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp
+                    fontSize = 16.sp,
+                    lineHeight = 18.sp
                 )
                 Text(
                     text = description,
+                    fontSize = 12.sp,
+                    lineHeight = 14.sp,
                     modifier = Modifier
                         .align(Alignment.BottomStart)
-                        .padding(bottom = 4.dp),
+                        .padding(bottom = 0.dp),
                     color = colorResource(id = R.color.card_description),
                     maxLines = 3
                 )

@@ -10,12 +10,12 @@ import androidx.compose.ui.text.font.FontFamily
 import com.tmpsolutions.R
 
 
-private val myCustomFont = FontFamily(
+private val poppinsFont = FontFamily(
     Font(R.font.poppins),
 )
 
 val Typography = Typography(
-    defaultFontFamily = myCustomFont,
+    defaultFontFamily = poppinsFont,
 )
 
 object TextStyles {

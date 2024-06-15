@@ -19,6 +19,12 @@ class AquariumRepositoryImpl(
         }
     }
 
+    override suspend fun getAquariumWithHabitants(aquariumID: Int): Flow<AquariumDomain> {
+        return dao.getAquarium(aquariumID).map {  fullAquariumEntity ->
+            fullAquariumEntity.toDomain()
+        }
+    }
+
     override suspend fun insertAquarium(aquarium: AquariumDomain) {
         dao.insert(aquarium.toEntity())
     }
