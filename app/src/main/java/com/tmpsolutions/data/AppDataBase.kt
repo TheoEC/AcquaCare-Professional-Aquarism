@@ -6,12 +6,16 @@ import androidx.room.TypeConverters
 import com.tmpsolutions.data.entity.AnimalInfo
 import com.tmpsolutions.data.entity.AquariumEntity
 import com.tmpsolutions.data.entity.HabitantEntity
+import com.tmpsolutions.data.entity.paremeters.Measurement
+import com.tmpsolutions.data.entity.paremeters.ParameterType
 
 @Database(
     entities = [
         AquariumEntity::class,
         HabitantEntity::class,
-        AnimalInfo::class
+        AnimalInfo::class,
+        ParameterType::class,
+        Measurement::class
     ],
     version = 1
 )

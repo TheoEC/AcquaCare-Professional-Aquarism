@@ -1,4 +1,4 @@
-package com.tmpsolutions.ui.AquariumDetails
+package com.tmpsolutions.ui.aquariumDetails
 
 import android.content.Context
 import androidx.lifecycle.ViewModel

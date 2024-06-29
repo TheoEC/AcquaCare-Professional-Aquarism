@@ -1,4 +1,4 @@
-package com.tmpsolutions.ui.AquariumDetails
+package com.tmpsolutions.ui.aquariumDetails
 
 import com.tmpsolutions.domain.model.AquariumDomain
 

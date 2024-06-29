@@ -1,4 +1,4 @@
-package com.tmpsolutions.ui.AquariumDetails
+package com.tmpsolutions.ui.aquariumDetails
 
 import android.util.Log
 import androidx.annotation.DrawableRes
@@ -25,17 +25,20 @@ import androidx.compose.ui.unit.dp
 import com.tmpsolutions.R
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.sp
-import com.tmpsolutions.ui.DesignUtils.BackgroundDesign
+import androidx.navigation.NavHostController
+import com.tmpsolutions.ui.designUtils.BackgroundDesign
 
 @Composable
-fun AquariumDetailsScreen(viewModel: AquariumDetailViewModel) {
+fun AquariumDetailsScreen(
+    navController: NavHostController,
+    viewModel: AquariumDetailViewModel
+) {
     var title by remember { mutableStateOf("") }
 
     val state = viewModel.state.collectAsState(initial = AquariumDetailState.Loading)
@@ -47,7 +50,7 @@ fun AquariumDetailsScreen(viewModel: AquariumDetailViewModel) {
             }
             is AquariumDetailState.Success -> {
                 title = (state.value as AquariumDetailState.Success).aquarium.name
-                FunctionalitiesList()
+                FunctionalitiesList(navController)
             }
             is AquariumDetailState.Error -> Log.e("AquariumDetailScreen", "ERROR")
         }
@@ -56,7 +59,7 @@ fun AquariumDetailsScreen(viewModel: AquariumDetailViewModel) {
 
 @Preview(device = "spec:id=reference_phone,shape=Normal,width=411,height=891,unit=dp,dpi=420")
 @Composable
-fun FunctionalitiesList(){
+fun FunctionalitiesList(navController: NavHostController? = null){
     val scrollSate = rememberScrollState()
     Column(
         modifier = Modifier
@@ -74,7 +77,9 @@ fun FunctionalitiesList(){
             resourceId = R.drawable.ic_ph,
             title = "Parametros",
             description = "Saiba a saúde do seu aquário através de todas as métricas salvas ",
-            onClick = {}
+            onClick = {
+//                navController.navigate()
+            }
         )
 
         ButtonCard(

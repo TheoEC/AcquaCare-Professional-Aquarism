@@ -26,8 +26,8 @@ import androidx.navigation.NavHostController
 import com.tmpsolutions.ApplicationScreen
 import com.tmpsolutions.R
 import com.tmpsolutions.domain.model.AquariumDomain
-import com.tmpsolutions.ui.DesignUtils.AddButton
-import com.tmpsolutions.ui.DesignUtils.BackgroundDesign
+import com.tmpsolutions.ui.designUtils.AddButton
+import com.tmpsolutions.ui.designUtils.BackgroundDesign
 import com.tmpsolutions.ui.navigation.Screen
 import java.util.Date
 
@@ -50,7 +50,6 @@ fun MainScreen(
                 is AquariumListState.Success -> {
                     val aquariumsList = (state.value as AquariumListState.Success).aquariums
                     AquariumCardList(aquariumsList) { aquariumID ->
-                        val teste = aquariumID
                         navController?.navigate(route = Screen.AquariumDetailScreen.route + "/$aquariumID")
                     }
                     AddButton(
@@ -60,9 +59,9 @@ fun MainScreen(
                     )
                 }
                 AquariumListState.Empty -> TODO()
-                is AquariumListState.Error -> TODO()
+                is AquariumListState.Error -> TODO() //Log.e(...)
                 AquariumListState.Loading -> {
-
+                    TODO()
                 }
             }
         }

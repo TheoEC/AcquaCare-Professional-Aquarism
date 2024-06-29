@@ -9,6 +9,7 @@ import com.tmpsolutions.data.entity.AnimalInfo
 import com.tmpsolutions.data.entity.AquariumEntity
 import com.tmpsolutions.data.entity.FullAquarium
 import com.tmpsolutions.data.entity.HabitantEntity
+import com.tmpsolutions.data.entity.paremeters.ParameterTypeEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -21,6 +22,12 @@ interface AquariumDao {
 
     @Insert
     suspend fun insert(animalInfo: AnimalInfo)
+
+    @Insert
+    suspend fun insert(parameterTypeEntity: ParameterTypeEntity)
+
+    @Query("Select * From parametertype")
+    fun getParameterTypes() : Flow<List<ParameterTypeEntity>>
 
     @Transaction
     @Query("Select * From aquarium")

@@ -8,8 +8,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.tmpsolutions.ui.AquariumDetails.AquariumDetailViewModel
-import com.tmpsolutions.ui.AquariumDetails.AquariumDetailsScreen
+import com.tmpsolutions.ui.aquariumDetails.AquariumDetailViewModel
+import com.tmpsolutions.ui.aquariumDetails.AquariumDetailsScreen
 import com.tmpsolutions.ui.LoginScreen
 import com.tmpsolutions.ui.MainScreen.MainScreen
 import com.tmpsolutions.ui.MainScreen.MainViewModel
@@ -55,7 +55,9 @@ fun Navigation(context: Context, mainViewModel: MainViewModel) {
             if (aquariumID != null) {
                 val factory = AquariumDetailViewModel.Factory(context, aquariumID)
                 val viewModel: AquariumDetailViewModel = viewModel(factory = factory)
-                AquariumDetailsScreen(viewModel)
+                AquariumDetailsScreen(
+                    navController = navController,
+                    viewModel = viewModel)
             } else {
                 //TODO return and show error dialog
             }

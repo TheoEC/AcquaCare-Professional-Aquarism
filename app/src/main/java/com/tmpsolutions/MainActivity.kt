@@ -8,12 +8,14 @@ import androidx.compose.ui.unit.dp
 import android.view.WindowManager
 import androidx.activity.viewModels
 import com.tmpsolutions.data.db
+import com.tmpsolutions.data.di.koinModule
 import com.tmpsolutions.data.repository.AquariumRepositoryImpl
 import com.tmpsolutions.mapper.toDp
 import com.tmpsolutions.ui.MainScreen.MainViewModel
 import com.tmpsolutions.ui.getNavigationBarHeight
 import com.tmpsolutions.ui.navigation.Navigation
 import com.tmpsolutions.ui.theme.MyApplicationTheme
+import org.koin.core.context.startKoin
 
 class MainActivity : ComponentActivity() {
 
@@ -31,6 +33,11 @@ class MainActivity : ComponentActivity() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
+
+        startKoin {
+            applicationContext
+            modules(koinModule)
+        }
 
         setContent{
             MyApplicationTheme {

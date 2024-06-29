@@ -4,6 +4,8 @@
         <item name="android:windowBackground">@color/aquarium_card_background</item>
         <item name="android:fontFamily">@font/poppins_bold</item>
 
+        <item name="cardBackgroundColor">#FFFFFF</item>
+
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/user_area_background</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>

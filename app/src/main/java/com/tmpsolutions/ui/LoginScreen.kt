@@ -28,7 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.tmpsolutions.R
-import com.tmpsolutions.ui.DesignUtils.HeaderBox
+import com.tmpsolutions.ui.designUtils.HeaderBox
 import com.tmpsolutions.ui.navigation.Screen
 
 

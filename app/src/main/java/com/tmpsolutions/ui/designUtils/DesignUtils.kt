@@ -1,4 +1,4 @@
-package com.tmpsolutions.ui.DesignUtils
+package com.tmpsolutions.ui.designUtils
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background

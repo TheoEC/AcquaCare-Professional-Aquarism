@@ -57,6 +57,12 @@ dependencies {
     implementation(libs.navigation.ui)
     implementation(libs.androidx.tools.core)
 
+    implementation(platform(libs.koin.bom))
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.viewmodel)
+
+
     implementation(libs.kotlinx.coroutines.android)
 
     // Room

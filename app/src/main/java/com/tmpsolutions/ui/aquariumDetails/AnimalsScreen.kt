@@ -1,4 +1,4 @@
-package com.tmpsolutions.ui.AquariumDetails
+package com.tmpsolutions.ui.aquariumDetails
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,11 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.tmpsolutions.domain.model.AquariumDomain
-import com.tmpsolutions.ui.DesignUtils.AddButton
-import com.tmpsolutions.ui.DesignUtils.BackgroundDesign
+import com.tmpsolutions.ui.designUtils.AddButton
+import com.tmpsolutions.ui.designUtils.BackgroundDesign
 
 @Composable
 fun AnimalsScreen(aquarium: AquariumDomain) {

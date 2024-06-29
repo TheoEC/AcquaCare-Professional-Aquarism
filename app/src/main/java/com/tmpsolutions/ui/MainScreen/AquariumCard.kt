@@ -21,7 +21,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.tmpsolutions.R
 import com.tmpsolutions.domain.model.AquariumDomain
-import com.tmpsolutions.ui.DesignUtils.AddButton
 import com.tmpsolutions.ui.theme.TextStyles
 
 @Composable

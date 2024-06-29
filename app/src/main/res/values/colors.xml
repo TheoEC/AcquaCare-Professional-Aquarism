@@ -8,6 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="aquarium_card_background">#E7F6F6</color>
+    <color name="cardBackgroundColorr">#E7F6F6</color>
+    <color name="myCustomColor">#FF5733</color>
     <color name="user_area_background">#50C2C9</color>
     <color name="light_background">#F0F4F3</color>
     <color name="top_blue_circle">#FF8FE1D7</color>
@@ -15,4 +17,6 @@
     <color name="btn_red">#F64343</color>
     <color name="btn_gray">#C4C4C4</color>
     <color name="card_description">#A8A8A8</color>
+    <color name="Metric_Red">#4DF25700</color>
+    <color name="Metric_Green">#90E33C</color>
 </resources>
