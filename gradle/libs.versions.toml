@@ -2,12 +2,12 @@
 agp = "8.5.0"
 comGoogleDevtoolsKspGradlePlugin = "1.9.24-1.0.20"
 gradle = "8.5.0"
-koin-bom = "3.5.0"
+koin-bom = "3.5.6"
 kotlin = "1.9.23"
 coreKtx = "1.13.1"
 junit = "4.13.2"
-junitVersion = "1.1.5"
-espressoCore = "3.5.1"
+junitVersion = "1.2.1"
+espressoCore = "3.6.1"
 appcompat = "1.7.0"
 kotlinGradlePlugin = "1.9.23"
 kotlinxCoroutinesAndroid = "1.7.3"
@@ -15,7 +15,7 @@ material = "1.12.0"
 compose = "1.6.8"
 jetbrainsKotlinJvm = "1.9.24"
 navigation = "2.7.7"
-toolsCore = "1.0.0-alpha08"
+toolsCore = "1.0.0-alpha09"
 room = "2.6.1"
 ksp = "1.9.24-1.0.20"
 
@@ -34,6 +34,7 @@ material = { group = "com.google.android.material", name = "material", version.r
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin-bom" }
 koin-core = { module = "io.insert-koin:koin-core" }
 koin-android = { module = "io.insert-koin:koin-android" }
+koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose" }
 koin-androidx-viewmodel = { module = "io.insert-koin:koin-androidx-viewmodel" }
 
 compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "compose"}

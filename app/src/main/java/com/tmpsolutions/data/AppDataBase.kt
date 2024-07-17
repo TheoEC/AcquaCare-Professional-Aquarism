@@ -6,6 +6,7 @@ import androidx.room.TypeConverters
 import com.tmpsolutions.data.entity.AnimalInfo
 import com.tmpsolutions.data.entity.AquariumEntity
 import com.tmpsolutions.data.entity.HabitantEntity
+import com.tmpsolutions.data.entity.paremeters.AquariumParameter
 import com.tmpsolutions.data.entity.paremeters.Measurement
 import com.tmpsolutions.data.entity.paremeters.ParameterType
 
@@ -14,8 +15,10 @@ import com.tmpsolutions.data.entity.paremeters.ParameterType
         AquariumEntity::class,
         HabitantEntity::class,
         AnimalInfo::class,
+        //Parameters
         ParameterType::class,
-        Measurement::class
+        Measurement::class,
+        AquariumParameter::class
     ],
     version = 1
 )

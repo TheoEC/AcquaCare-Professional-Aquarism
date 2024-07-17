@@ -9,6 +9,9 @@ import com.tmpsolutions.data.entity.AnimalInfo
 import com.tmpsolutions.data.entity.AquariumEntity
 import com.tmpsolutions.data.entity.FullAquarium
 import com.tmpsolutions.data.entity.HabitantEntity
+import com.tmpsolutions.data.entity.paremeters.AquariumParameter
+import com.tmpsolutions.data.entity.paremeters.AquariumParameterWithType
+import com.tmpsolutions.data.entity.paremeters.Measurement
 import com.tmpsolutions.data.entity.paremeters.ParameterTypeEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -46,4 +49,15 @@ interface AquariumDao {
     @Insert
     suspend fun update(animalInfo: AnimalInfo)
 
+    // PARAMETERS
+
+    @Query("Select * From aquarium_parameter where id = :aquariumID")
+    fun getAllAquariumParameters(aquariumID: Int) : Flow<List<AquariumParameterWithType>>
+
+    @Query("""
+        Select * From measurement where parameter_id = :parameterID
+        ORDER BY date DESC
+        LIMIT 1
+    """)
+    suspend fun getLastMeasurement(parameterID: Int) : Measurement
 }

@@ -33,6 +33,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import com.tmpsolutions.ui.designUtils.BackgroundDesign
+import com.tmpsolutions.ui.navigation.Screen
 
 @Composable
 fun AquariumDetailsScreen(
@@ -50,16 +51,18 @@ fun AquariumDetailsScreen(
             }
             is AquariumDetailState.Success -> {
                 title = (state.value as AquariumDetailState.Success).aquarium.name
-                FunctionalitiesList(navController)
+                FunctionalitiesList(navController, viewModel.aquariumID)
             }
             is AquariumDetailState.Error -> Log.e("AquariumDetailScreen", "ERROR")
         }
     }
 }
 
-@Preview(device = "spec:id=reference_phone,shape=Normal,width=411,height=891,unit=dp,dpi=420")
 @Composable
-fun FunctionalitiesList(navController: NavHostController? = null){
+fun FunctionalitiesList(
+    navController: NavHostController,
+    aquariumID: Int
+){
     val scrollSate = rememberScrollState()
     Column(
         modifier = Modifier
@@ -78,7 +81,7 @@ fun FunctionalitiesList(navController: NavHostController? = null){
             title = "Parametros",
             description = "Saiba a saúde do seu aquário através de todas as métricas salvas ",
             onClick = {
-//                navController.navigate()
+                navController.navigate(Screen.AquariumParametersScreen.route + "/${aquariumID}")
             }
         )
 

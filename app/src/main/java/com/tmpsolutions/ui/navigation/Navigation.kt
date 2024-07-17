@@ -8,12 +8,19 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.tmpsolutions.domain.repository.ParametersRepository
 import com.tmpsolutions.ui.aquariumDetails.AquariumDetailViewModel
 import com.tmpsolutions.ui.aquariumDetails.AquariumDetailsScreen
 import com.tmpsolutions.ui.LoginScreen
 import com.tmpsolutions.ui.MainScreen.MainScreen
 import com.tmpsolutions.ui.MainScreen.MainViewModel
 import com.tmpsolutions.ui.WelcomeScreen
+import com.tmpsolutions.ui.aquariumParameters.ParametersScreen
+import com.tmpsolutions.ui.aquariumParameters.ParametersViewModel
+import org.koin.androidx.compose.koinViewModel
+import org.koin.core.context.GlobalContext.get
+import org.koin.core.parameter.parametersOf
+import org.koin.java.KoinJavaComponent.inject
 
 @Composable
 fun Navigation(context: Context, mainViewModel: MainViewModel) {
@@ -53,15 +60,34 @@ fun Navigation(context: Context, mainViewModel: MainViewModel) {
         ) { backStackEntry ->
             val aquariumID = backStackEntry.arguments?.getInt("aquariumID")
             if (aquariumID != null) {
-                val factory = AquariumDetailViewModel.Factory(context, aquariumID)
-                val viewModel: AquariumDetailViewModel = viewModel(factory = factory)
+                val viewModel: AquariumDetailViewModel = koinViewModel() {
+                    parametersOf(aquariumID)
+                }
+
                 AquariumDetailsScreen(
                     navController = navController,
-                    viewModel = viewModel)
+                    viewModel = viewModel
+                )
             } else {
                 //TODO return and show error dialog
             }
 
+        }
+
+        composable(
+            route = Screen.AquariumParametersScreen.route + "/{aquariumID}",
+            arguments = listOf(
+                navArgument("aquariumID") {
+                    type = NavType.IntType
+                    nullable = false
+                }
+            )
+        ) { backStackEntry ->
+            val aquariumID = backStackEntry.arguments?.getInt("aquariumID")
+            val viewModel : ParametersViewModel = koinViewModel() {
+                parametersOf(aquariumID)
+            }
+            ParametersScreen(viewModel)
         }
     }
 }

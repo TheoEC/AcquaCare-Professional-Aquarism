@@ -7,14 +7,14 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import android.view.WindowManager
 import androidx.activity.viewModels
-import com.tmpsolutions.data.db
-import com.tmpsolutions.data.di.koinModule
-import com.tmpsolutions.data.repository.AquariumRepositoryImpl
+import com.tmpsolutions.data.di.dataModule
+import com.tmpsolutions.domain.di.aquariumModule
 import com.tmpsolutions.mapper.toDp
 import com.tmpsolutions.ui.MainScreen.MainViewModel
 import com.tmpsolutions.ui.getNavigationBarHeight
 import com.tmpsolutions.ui.navigation.Navigation
 import com.tmpsolutions.ui.theme.MyApplicationTheme
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
 class MainActivity : ComponentActivity() {
@@ -35,8 +35,13 @@ class MainActivity : ComponentActivity() {
         )
 
         startKoin {
-            applicationContext
-            modules(koinModule)
+            androidContext(applicationContext)
+            modules(
+                listOf(
+                    dataModule,
+                    aquariumModule
+                )
+            )
         }
 
         setContent{

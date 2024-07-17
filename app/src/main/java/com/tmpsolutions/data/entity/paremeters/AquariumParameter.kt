@@ -1,12 +1,20 @@
 package com.tmpsolutions.data.entity.paremeters
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
-import com.tmpsolutions.domain.model.parameters.Measurement
-import com.tmpsolutions.domain.model.parameters.ParameterType
+import androidx.room.ForeignKey
+import androidx.room.PrimaryKey
+import androidx.room.Relation
+import com.tmpsolutions.data.entity.AquariumEntity
 
-@Entity
+@Entity(
+    tableName = "aquarium_parameter",
+    foreignKeys = [
+        ForeignKey(entity = AquariumEntity::class, parentColumns = ["id"], childColumns = ["aquarium_id"], onDelete = ForeignKey.CASCADE)
+    ]
+)
 data class AquariumParameter(
-    val aquariumID : Int,
-    val type : ParameterType,
-    val measures : List<Measurement>
+    @PrimaryKey(autoGenerate = true) val id : Int,
+    @ColumnInfo(name = "aquarium_id") val aquariumID : Int,
+    @ColumnInfo(name = "type_id") val typeID : Int,
 )

@@ -28,6 +28,7 @@ import com.tmpsolutions.R
 import com.tmpsolutions.domain.model.AquariumDomain
 import com.tmpsolutions.ui.designUtils.AddButton
 import com.tmpsolutions.ui.designUtils.BackgroundDesign
+import com.tmpsolutions.ui.designUtils.Loader
 import com.tmpsolutions.ui.navigation.Screen
 import java.util.Date
 
@@ -61,7 +62,7 @@ fun MainScreen(
                 AquariumListState.Empty -> TODO()
                 is AquariumListState.Error -> TODO() //Log.e(...)
                 AquariumListState.Loading -> {
-                    TODO()
+                    Loader()
                 }
             }
         }

@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.tmpsolutions.domain.model.parameters.AquariumParameterID
+import com.tmpsolutions.domain.model.parameters.AquariumParameterTypeID
 import com.tmpsolutions.domain.model.parameters.ParameterTypeDomain
 import android.util.TypedValue
 import androidx.compose.foundation.layout.Column
@@ -21,9 +21,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.google.android.material.R.attr.cardBackgroundColor
+import com.tmpsolutions.domain.model.parameters.AquariumParameter
 
 @Composable
-fun ParameterCard(parameterType: ParameterTypeDomain) {
+fun ParameterCard(parameter: AquariumParameter) {
     val context = LocalContext.current
     val typedValue = TypedValue()
     context.theme.resolveAttribute(cardBackgroundColor, typedValue, true)
@@ -42,7 +43,7 @@ fun ParameterCard(parameterType: ParameterTypeDomain) {
                 Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = parameterType.name,
+                    text = parameter.type!!.getParameterName(), //TODO Protection with missing advice
                     fontSize = 18.sp
                 )
                 Text(
@@ -84,10 +85,16 @@ fun ParameterCard(parameterType: ParameterTypeDomain) {
 @Composable
 fun PreviewTest(modifier: Modifier = Modifier) {
     val ph = ParameterTypeDomain(
-        id = AquariumParameterID.PH,
+        id = AquariumParameterTypeID.PH,
         name = "pH",
         metric = ""
     )
 
-    ParameterCard(parameterType = ph)
+    ParameterCard(
+        parameter = AquariumParameter(
+            type = ph,
+            aquariumID = -1,
+            lastMeasurement = null
+        )
+    )
 }

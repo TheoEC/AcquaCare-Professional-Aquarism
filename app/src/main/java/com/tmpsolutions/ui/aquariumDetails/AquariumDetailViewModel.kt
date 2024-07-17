@@ -16,7 +16,7 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class AquariumDetailViewModel(
-    private val aquariumID : Int,
+    val aquariumID : Int,
     val getAquariumUseCase : GetAquariumUseCase
 ) : ViewModel() {
     private val _state = MutableSharedFlow<AquariumDetailState>(replay = 1)
@@ -34,18 +34,6 @@ class AquariumDetailViewModel(
                 .collect { aquarium ->
                     _state.emit(AquariumDetailState.Success(aquarium))
                 }
-        }
-    }
-
-    @Suppress("UNCHECKED_CAST")
-    class Factory(
-        private val context: Context,
-        private val aquariumID: Int
-        ) : ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            val repository = AquariumRepositoryImpl(context.db.AquariumDao())
-
-            return AquariumDetailViewModel(aquariumID, GetAquariumUseCase(repository)) as T
         }
     }
 }
