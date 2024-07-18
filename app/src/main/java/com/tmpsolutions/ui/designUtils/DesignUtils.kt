@@ -104,3 +104,18 @@ fun AddButton(onClick: () -> Unit) {
         )
     }
 }
+
+@Composable
+fun CloseButton(onClick: () -> Unit) {
+    FloatingActionButton(
+        onClick = { onClick() }
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.ic_close),
+            contentDescription = "close",
+            modifier = Modifier
+                .width(65.dp)
+                .height(65.dp)
+        )
+    }
+}

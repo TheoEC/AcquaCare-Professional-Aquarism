@@ -1,4 +1,9 @@
 package com.tmpsolutions.domain.usecase.parameters
 
-class AddAquariumParameterUseCase(aquariumID: Int, ) {
+import com.tmpsolutions.domain.repository.ParametersRepository
+
+class AddAquariumParameterUseCase(val repository: ParametersRepository) {
+    suspend operator fun invoke(aquariumID: Int, parametertypeID: Int) {
+        repository.insertAquariumParameter(aquariumID, parametertypeID)
+    }
 }

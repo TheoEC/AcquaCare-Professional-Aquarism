@@ -1,7 +1,6 @@
 package com.tmpsolutions.ui.aquariumParameters
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -21,34 +20,37 @@ import com.tmpsolutions.domain.model.parameters.ParameterType
 @Composable
 fun AddParameterScreen(
     viewModel: ParametersViewModel,
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
     Card(
         modifier = modifier
             .fillMaxWidth(.8f)
     ) {
         LazyColumn {
-            items(items = viewModel.getMissingParameterTypes()) { parameter ->
-                Box(modifier = Modifier.fillMaxWidth()) {
-                    Text(
-                        text = parameter.getParameterName(),
-                        modifier = Modifier
-                            .align(Alignment.CenterStart)
-                            .padding(start = 5.dp)
-                    )
-                    Button(
-                        modifier = Modifier
-                            .align(Alignment.CenterEnd)
-                            .padding(end = 5.dp),
-                        onClick = { viewModel. },
-                        colors = ButtonDefaults.buttonColors(
-                            backgroundColor = colorResource(id = R.color.Metric_Green)
-                        )
-                    ) {
-                        Text(text = "Adicionar")
-                    }
-                }
-            }
+
+        }
+    }
+}
+
+@Composable
+fun AddParameterCard(parameter: ParameterType, addAquariumParameter : (id: Int) -> Unit) {
+    Box(modifier = Modifier.fillMaxWidth()) {
+        Text(
+            text = parameter.getParameterName(),
+            modifier = Modifier
+                .align(Alignment.CenterStart)
+                .padding(start = 5.dp)
+        )
+        Button(
+            modifier = Modifier
+                .align(Alignment.CenterEnd)
+                .padding(end = 5.dp),
+            onClick = { addAquariumParameter(parameter.id) },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = colorResource(id = R.color.Metric_Green)
+            )
+        ) {
+            Text(text = "Adicionar")
         }
     }
 }

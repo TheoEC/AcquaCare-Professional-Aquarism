@@ -95,17 +95,17 @@ val parameters = listOf(
 )
 
 object AquariumParameterTypeID {
-    const val PH = 0
-    const val TEMPERATURE = 1
-    const val AMMONIA = 2
-    const val NITRITE = 3
-    const val NITRATE = 4
-    const val SPECIFIC_GRAVITY = 5
-    const val SALINITY = 6
-    const val GH = 7
-    const val KH = 8
-    const val CALCIUM = 9
-    const val MAGNESIUM = 10
-    const val PHOSPHATE = 11
-    const val POTASSIUM = 12
+    const val PH = 1
+    const val TEMPERATURE = 2
+    const val AMMONIA = 3
+    const val NITRITE = 4
+    const val NITRATE = 5
+    const val SPECIFIC_GRAVITY = 6
+    const val SALINITY = 7
+    const val GH = 8
+    const val KH = 9
+    const val CALCIUM = 10
+    const val MAGNESIUM = 11
+    const val PHOSPHATE = 12
+    const val POTASSIUM = 13
 }

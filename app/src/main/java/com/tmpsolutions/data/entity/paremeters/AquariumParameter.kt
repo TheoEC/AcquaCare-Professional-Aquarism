@@ -14,7 +14,7 @@ import com.tmpsolutions.data.entity.AquariumEntity
     ]
 )
 data class AquariumParameter(
-    @PrimaryKey(autoGenerate = true) val id : Int,
+    @PrimaryKey(autoGenerate = true) val id : Int = 0,
     @ColumnInfo(name = "aquarium_id") val aquariumID : Int,
     @ColumnInfo(name = "type_id") val typeID : Int,
 )

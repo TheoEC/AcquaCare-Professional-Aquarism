@@ -18,33 +18,38 @@ val Context.db: AppDataBase
         AppDataBase::class.java, DATA_BASE_NAME
     )
         .addCallback(object : RoomDatabase.Callback() {
-            override fun onCreate(db: SupportSQLiteDatabase) {
-                super.onCreate(db)
+            override fun onOpen(db: SupportSQLiteDatabase) {
+                super.onOpen(db)
                 CoroutineScope(Dispatchers.IO).launch {
                     val tempBD = Room.databaseBuilder(
                         applicationContext,
                         AppDataBase::class.java, DATA_BASE_NAME
                     ).build()
-                    
+
                     prePopulateDataBase(tempBD.AquariumDao())
                 }
+            }
+            override fun onCreate(db: SupportSQLiteDatabase) {
+                super.onCreate(db)
+
             }
         })
         .build()
 
 private suspend fun prePopulateDataBase(dao: AquariumDao) {
-//    with(CommonParameters) {
-//        dao.insert(ammonia.toEntity())
-//        dao.insert(salinity.toEntity())
-//        dao.insert(ph.toEntity())
-//        dao.insert(kh.toEntity())
-//        dao.insert(gh.toEntity())
-//        dao.insert(nitrate.toEntity())
-//        dao.insert(nitrite.toEntity())
-//        dao.insert(temperature.toEntity())
-//        dao.insert(calcium.toEntity())
-//        dao.insert(magnesium.toEntity())
-//        dao.insert(phosphate.toEntity())
-//        dao.insert(potassium.toEntity())
-//    }
+    with(CommonParameters) {
+        dao.insert(ph.toEntity())
+        dao.insert(ammonia.toEntity())
+        dao.insert(salinity.toEntity())
+        dao.insert(ph.toEntity())
+        dao.insert(kh.toEntity())
+        dao.insert(gh.toEntity())
+        dao.insert(nitrate.toEntity())
+        dao.insert(nitrite.toEntity())
+        dao.insert(temperature.toEntity())
+        dao.insert(calcium.toEntity())
+        dao.insert(magnesium.toEntity())
+        dao.insert(phosphate.toEntity())
+        dao.insert(potassium.toEntity())
+    }
 }

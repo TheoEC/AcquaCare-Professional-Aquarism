@@ -5,6 +5,7 @@ import com.tmpsolutions.data.AquariumDao
 import com.tmpsolutions.data.db
 import com.tmpsolutions.data.repository.ParametersRepositoryImpl
 import com.tmpsolutions.domain.repository.ParametersRepository
+import com.tmpsolutions.domain.usecase.parameters.AddAquariumParameterUseCase
 import com.tmpsolutions.domain.usecase.parameters.GetAquariumParametersUseCase
 import com.tmpsolutions.ui.aquariumParameters.ParametersViewModel
 import org.koin.android.ext.koin.androidContext
@@ -21,11 +22,16 @@ val dataModule = module {
     single<GetAquariumParametersUseCase>{
         GetAquariumParametersUseCase(repository = get())
     }
+    single<AddAquariumParameterUseCase>{
+        AddAquariumParameterUseCase(repository = get())
+    }
+
     viewModel { (id: Int) ->
         val repository : ParametersRepository = get()
         ParametersViewModel(
             aquariumID = id,
-            getAquariumParametersUseCase = get()
+            getAquariumParametersUseCase = get(),
+            addAquariumParameterUseCase = get()
         )
     }
 }

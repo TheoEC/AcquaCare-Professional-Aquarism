@@ -2,6 +2,7 @@ package com.tmpsolutions.data
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
@@ -26,7 +27,7 @@ interface AquariumDao {
     @Insert
     suspend fun insert(animalInfo: AnimalInfo)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(parameterTypeEntity: ParameterTypeEntity)
 
     @Query("Select * From parametertype")
@@ -51,7 +52,10 @@ interface AquariumDao {
 
     // PARAMETERS
 
-    @Query("Select * From aquarium_parameter where id = :aquariumID")
+    @Insert
+    fun insert(aquariumParameter: AquariumParameter)
+
+    @Query("Select * From aquarium_parameter where aquarium_id = :aquariumID")
     fun getAllAquariumParameters(aquariumID: Int) : Flow<List<AquariumParameterWithType>>
 
     @Query("""
@@ -59,5 +63,5 @@ interface AquariumDao {
         ORDER BY date DESC
         LIMIT 1
     """)
-    suspend fun getLastMeasurement(parameterID: Int) : Measurement
+    suspend fun getLastMeasurement(parameterID: Int) : Measurement?
 }

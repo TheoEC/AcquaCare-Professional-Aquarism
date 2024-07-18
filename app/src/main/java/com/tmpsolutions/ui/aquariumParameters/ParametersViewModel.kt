@@ -3,24 +3,22 @@ package com.tmpsolutions.ui.aquariumParameters
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tmpsolutions.domain.model.parameters.AquariumParameter
-import com.tmpsolutions.domain.model.parameters.CommonParameters
 import com.tmpsolutions.domain.model.parameters.ParameterType
 import com.tmpsolutions.domain.model.parameters.parameters
+import com.tmpsolutions.domain.usecase.parameters.AddAquariumParameterUseCase
 import com.tmpsolutions.domain.usecase.parameters.GetAquariumParametersUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOn
-import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
 class ParametersViewModel(
     val aquariumID: Int,
     val getAquariumParametersUseCase: GetAquariumParametersUseCase,
-    val addParameterToAquariumUseCase: AddParameterToAquariumUseCase
+    val addAquariumParameterUseCase: AddAquariumParameterUseCase
 ) : ViewModel() {
     var aquariumParameters = emptyList<AquariumParameter>()
 
@@ -29,6 +27,12 @@ class ParametersViewModel(
 
     init {
         loadParameters()
+    }
+
+    fun addAquariumParameter(typeID: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            addAquariumParameterUseCase(aquariumID = aquariumID, parametertypeID = typeID)
+        }
     }
 
     private fun loadParameters() {

@@ -44,14 +44,14 @@ fun ParameterCard(parameter: AquariumParameter) {
             ) {
                 Text(
                     text = parameter.type!!.getParameterName(), //TODO Protection with missing advice
-                    fontSize = 18.sp
+                    fontSize = 20.sp
                 )
                 Text(
                     text = "Oct 8 - 14",
                     fontSize = 10.sp,
                     color = Color.Gray,
                     modifier = Modifier
-                        .padding(top = 6.dp)
+                        .padding(top = 5.dp)
                 )
 
                 Box(
